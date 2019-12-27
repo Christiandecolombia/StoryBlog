@@ -57,6 +57,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': ['apps/main/templates',
+                'apps/accounts/templates',
                 'StoryBlog/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
