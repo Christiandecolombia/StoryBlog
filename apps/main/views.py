@@ -1,4 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from django.contrib import messages
 
-def front_page(request):
-    return render(request, 'front_page.html', {})
+def index(request):
+    return render(request, 'main/index.html', {})
+
+def frontpage(request):
+    return render(request, 'main/frontpage.html')
