@@ -10,3 +10,6 @@ def frontpage(request):
     print("*********************views/frontpage")
     return render(request, 'main/frontpage.html')
     
+def storypage(request):
+    print("*********************views/storypage")
+    return render(request, 'main/storypage.html')
