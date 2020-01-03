@@ -1,4 +1,5 @@
 from django.shortcuts import render
 
 def accounts(request):
-    return render(request, 'accounts.html', {})
+    print("*********accounts views.oy*********")
+    return render(request, 'accounts/accounts.html')
