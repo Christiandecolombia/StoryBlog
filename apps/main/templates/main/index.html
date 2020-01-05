@@ -1,10 +1,97 @@
 {% extends 'StoryBlog/base.html' %}{% block page_content %}
+
 <body>
-<h1>this is index</h1>
 
-<a class="nav-link" href="/frontpage">frontpage</a>
-<a class="nav-link" href="/accounts">accounts</a>
+    <div class="jumbotron">
+        <h1 class="display-3">Story Blog</h1>
+        <p class="lead">Post your story so your friends can read them!</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        </p>
+    </div>
 
+    <h1>Register</h1>
+    <!-- *************************FLASH MESSAGES*************************** -->
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <!-- *************************LOGIN USER FUNCTION*************************** -->
+    <!-- <form action='/login' method='POST'>
+        <fieldset>
+            {% csrf_token %}
+            <p>Email:<br><input type="email" name='logemail'></p>
+            <p>Password:<br><input type="password" name='logpassword'></p>
+            <button type=submit>submit</button>
+    </form>
+
+     *************************CREATE USER FUNCTION***************************
+    <form action='/create' method='POST'>
+        {% csrf_token %}
+        <p>First Name:<br><input type="text" name=fname></p>
+        <p>Last Name:<br><input type="text" name=lname></p>
+        <p>Email:<br><input type="email" name=email></p>
+        <p>Password:<br><input type="password" name=password></p>
+        <p>Confirm Password:<br><input type="password" name=conpassword></p>
+        <button type=submit>submit</button>
+    </form> -->
+
+    <!-- *************************Pulse register USER FUNCTION*************************** -->
+
+    <form action='/register' method='POST'>
+        {% csrf_token %}
+        <legend>Legend</legend>
+            <!-- ************************* Static Label*************************** -->
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="text" readonly="" class="form-control-plaintext" id="staticEmail"
+                    value="email@example.com">
+            </div>
+        </div>
+            <!-- *************************Post Fname*************************** -->
+        <div class="form-group">
+            <label for="exampleInputEmail1">First Name</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="firstName"
+                placeholder="First Name" name=firstName>
+        </div>
+
+            <!-- *************************Post Lname*************************** -->
+            <div class="form-group">
+                <label for="exampleInputEmail1">Last Name</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="lastName"
+                    placeholder="Last Name" name=lastName>
+            </div>
+
+            <!-- *************************Post Email*************************** -->
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="Enter email" name=email>
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+
+            <!-- *************************Post Password*************************** -->
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name=password>
+            </div>
+
+            <!-- *************************Post Confirm Password*************************** -->
+            <div class="form-group">
+                <label for="exampleInputPassword1">Confirm Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name=conpassword>
+            </div>
+
+            <!-- *************************Post Button*************************** -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 
 </body>
 {% endblock %}
