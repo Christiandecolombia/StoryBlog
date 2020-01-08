@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
-from .models import User
+from .models import User, Story
 
 # Render Templates
 
@@ -26,7 +26,7 @@ def storypage(request):
 
 
 def register(request):
-    print("*********************views/register")
+    print("*********************views/register/POST")
     if request.method == "POST": 
         errors = User.objects.register_validator(request.POST)
         if len(errors) > 0:
@@ -35,12 +35,13 @@ def register(request):
             return redirect ('/')
         else:
             userid=User.objects.create(
-                    firsName = request.POST['firstnName'],
+                    firstName = request.POST['firstName'],
                     lastName = request.POST['lastName'],
                     email = request.POST['email'],
                     password = request.POST['password']
                     )
             request.session['userid']=userid.id
-            request.session['firstName'] = userid.fname
+            request.session['firstName'] = userid.firstName
+            request.session['lastName'] = userid.lastName
 
             return redirect('/main/frontpage')

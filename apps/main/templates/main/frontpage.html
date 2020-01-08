@@ -1,23 +1,47 @@
 {% extends 'StoryBlog/base.html' %}{% block page_content %}
+
 <body>
 
+    <h1>Welcome! {{request.session.firstName}} {{request.session.lastName}}</h1>
+    <h3>User number {{request.session.userid}}</h3>
 
 
 
 
 
+    <button href='/main/addstory' type="button" class="btn btn-primary btn-lg btn-block">
+        <h2>Start a new Story</h2>
+    </button>
 
 
-<h2>Example body text</h2>
-<p>Nullam quis risus eget <a href="#">urna mollis ornare</a> vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
-<p><small>This line of text is meant to be treated as fine print.</small></p>
+    <h2>List of stories by this user</h2>
 
-<button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
-<p>The following is <strong>rendered as bold text</strong>.</p>
-<p>The following is <em>rendered as italicized text</em>.</p>
-<p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
+    <table >
+        <tr>
+            <th>Title</th>
+            <th>Created On</th>
+            <th>Options</th>
+        </tr>
+        {% for m in stories %}
+        <tr>
+            <td>{{m.title}}</td>
+            <td>{{m.pubDate}}</td>
+            <td><a href='/main/storypage/{{m.id}}'>go to Story page</a></td>
+            <td> {% if m.user.id == request.session.userid %}
+                <div style="display:inline;">
 
-
+                    <a href='/main/editstory/{{m.id}}'>edit</a>
+                    <a href='/main/deletestory/{{m.id}}'>delete</a>
+                </div>
+                {% else %}
+                <div style="display:none;">
+                    <a href='/main/editstory/{{m.id}}'>edit</a>
+                    <a href='/main/deletestory/{{m.id}}'>delete</a>
+                </div>
+                {% endif %}</td>
+        </tr>
+        {% endfor %}
+    </table>
 
 
 

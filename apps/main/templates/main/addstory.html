@@ -1,0 +1,16 @@
+{% extends 'StoryBlog/base.html' %}{% block page_content %}
+
+
+<body>
+
+    <h1>Welcome! {{request.session.firstName}} {{request.session.lastName}}</h1>
+    <h3>User number {{request.session.userid}}</h3>
+
+    
+
+    <form action='/postAddStory' method='POST'>
+        {% csrf_token %}
+
+    </form>
+</body>
+{% endblock %}
