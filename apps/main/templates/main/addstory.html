@@ -10,7 +10,14 @@
 
     <form action='/postAddStory' method='POST'>
         {% csrf_token %}
-
+        <div class="form-group">
+            <label class="col-form-label" for="inputDefault">Title</label>
+            <input type="text" class="form-control" placeholder="title" id="inputDefault">
+          </div>
+        <div class="form-group">
+            <label for="exampleTextarea">Write your story here</label>
+            <textarea class="form-control" id="exampleTextarea" rows="10"></textarea>
+          </div>
     </form>
 </body>
 {% endblock %}

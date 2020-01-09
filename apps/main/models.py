@@ -39,7 +39,7 @@ class Usermanager(models.Manager):
             return errors
 
 class Storymanager(models.Manager):
-    def validator(self, postData):
+    def story_validator(self, postData):
         errors= {}
         if len(postData[''])<2:
             errors['mainbody']='Can not be empty'
