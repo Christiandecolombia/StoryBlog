@@ -2,11 +2,13 @@
 
 <body>
 
-    <h1>Welcome! {{request.session.firstName}} {{request.session.lastName}}</h1>
+    {% if user.is_authenticated %}
+    <h1>Welcome! {{ request.session.first_name }} {{ request.session.last_name }}</h1>
     <h3>User number {{request.session.userid}}</h3>
-
-
-
+    <h2>User is authenticated , your name is: {{ user.username }}</h2>
+    {% else %}
+    <h2> you are not authenticated</h2>
+    {% endif %}
     <a  href='/main/addstory'>addstory</a>
 
     <h2>List of stories by this user</h2>
