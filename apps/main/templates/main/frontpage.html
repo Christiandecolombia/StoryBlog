@@ -1,16 +1,31 @@
 {% extends 'StoryBlog/base.html' %}{% block page_content %}
 
 <body>
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+
 
     {% if user.is_authenticated %}
-    <h1>Welcome! {{ request.session.first_name }} {{ request.session.last_name }}</h1>
-    <h3>User number {{request.session.userid}}</h3>
-    <h2>User is authenticated , your name is: {{ user.username }}</h2>
+    <h2>You are authenticated</h2>
+    <h1>Welcome! {{ user.username }}</h1>
     {% else %}
-    <h2> you are not authenticated</h2>
+    <h2>You are not authenticated</h2>
     {% endif %}
-    <a  href='/main/addstory'>addstory</a>
 
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="/frontpage">frontpage</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="/storypage">storypage</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href='/main/addstory'>addstory</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="/logout">logout</a>
+</li>
+</ul>
     <h2>List of stories by this user</h2>
 
     <table >

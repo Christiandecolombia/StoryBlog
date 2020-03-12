@@ -79,11 +79,13 @@ def my_view(request):
 #     objects = Storymanager()
 
 def addstory(request):
-    if render.method == "POST":
-        errors = 
-    else 
-    print("*********************views/addstory")
     return render(request, 'main/addstory.html')
+
+    # if render.method == "POST":
+        
+    # else 
+    # print("*********************views/addstory")
+    # return render(request, 'main/addstory.html')
 
 def postAddStory(request):
     print("*********************views/postAddStory/POST")
